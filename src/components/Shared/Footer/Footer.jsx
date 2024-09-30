@@ -6,6 +6,7 @@ const Footer = () => {
         <>
 
             <TabsSection></TabsSection>
+            <hr />
             <footer className='bg-gray-100 py-10'>
                 {/* Footer Top: Links to different sections */}
                 <div className='container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8'>
@@ -13,32 +14,36 @@ const Footer = () => {
                         <h3 className='font-semibold mb-4'>Support</h3>
                         <ul className='space-y-2'>
                             <li><a href='#' className='hover:underline'>Help Center</a></li>
-                            <li><a href='#' className='hover:underline'>Safety Information</a></li>
-                            <li><a href='#' className='hover:underline'>Cancellation Options</a></li>
-                            <li><a href='#' className='hover:underline'>Our COVID-19 Response</a></li>
-                            <li><a href='#' className='hover:underline'>Supporting People with Disabilities</a></li>
-                            <li><a href='#' className='hover:underline'>Report a neighborhood concern</a></li>
+                            <li><a href='#' className='hover:underline'>AirCover</a></li>
+                            <li><a href='#' className='hover:underline'>Anti-discrimination</a></li>
+                            <li><a href='#' className='hover:underline'>Disability support</a></li>
+                            <li><a href='#' className='hover:underline'>Cancellation options</a></li>
+                            <li><a href='#' className='hover:underline'>Report neighborhood concern</a></li>
                         </ul>
+
                     </div>
 
                     <div>
                         <h3 className='font-semibold mb-4'>Hosting</h3>
                         <ul className='space-y-2'>
-                            <li><a href='#' className='hover:underline'>Try hosting</a></li>
+                            <li><a href='#' className='hover:underline'>Airbnb your home</a></li>
                             <li><a href='#' className='hover:underline'>AirCover for Hosts</a></li>
-                            <li><a href='#' className='hover:underline'>Explore hosting resources</a></li>
-                            <li><a href='#' className='hover:underline'>Visit our community forum</a></li>
-                            <li><a href='#' className='hover:underline'>How to host responsibly</a></li>
+                            <li><a href='#' className='hover:underline'>Hosting resources</a></li>
+                            <li><a href='#' className='hover:underline'>Community forum</a></li>
+                            <li><a href='#' className='hover:underline'>Hosting responsibly</a></li>
+                            <li><a href='#' className='hover:underline'>Airbnb-friendly apartments</a></li>
+                            <li><a href='#' className='hover:underline'>Join a free Hosting class</a></li>
                         </ul>
                     </div>
                     <div>
                         <h3 className='font-semibold mb-4'>Airbnb</h3>
                         <ul className='space-y-2'>
                             <li><a href='#' className='hover:underline'>Newsroom</a></li>
-                            <li><a href='#' className='hover:underline'>Learn about new features</a></li>
-                            <li><a href='#' className='hover:underline'>Letter from our founders</a></li>
+                            <li><a href='#' className='hover:underline'>New features</a></li>
                             <li><a href='#' className='hover:underline'>Careers</a></li>
                             <li><a href='#' className='hover:underline'>Investors</a></li>
+                            <li><a href='#' className='hover:underline'>Gift cards</a></li>
+                            <li><a href='#' className='hover:underline'>Airbnb.org emergency stays</a></li>
                         </ul>
                     </div>
                 </div>
