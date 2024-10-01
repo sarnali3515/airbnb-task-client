@@ -85,10 +85,11 @@ const Navbar = () => {
             </div>
 
             {/* FilterSearchBox */}
-            <div className="w-full pb-5">
+            <div className="w-full ">
                 <FilterSearchBox isScrolled={isScrolled} />
+                <hr />
             </div>
-            <hr />
+
         </div>
     );
 };

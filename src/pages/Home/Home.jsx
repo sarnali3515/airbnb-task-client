@@ -1,6 +1,7 @@
 import { Helmet } from 'react-helmet-async';
 import Categories from '../../components/Categories/Categories';
 import { useState, useEffect } from 'react';
+import Rooms from '../../components/Home/Room';
 
 const Home = () => {
     const [isCategorySticky, setIsCategorySticky] = useState(false);
@@ -29,7 +30,7 @@ const Home = () => {
 
             {/* Categories section */}
             <div
-                className={`categories-section ${isCategorySticky ? 'fixed  w-full bg-white shadow-md z-10' : ''}`}
+                className={`categories-section ${isCategorySticky ? 'fixed top-16 w-full bg-white shadow-md z-10' : ''}`}
                 style={{
                     position: isCategorySticky ? 'fixed' : 'relative',
                     top: isCategorySticky ? '80px' : 'initial', // Adjust this value based on your navbar height
@@ -43,7 +44,7 @@ const Home = () => {
 
             {/* Rooms section */}
             <div>
-                {/* Add your rooms section here */}
+                <Rooms></Rooms>
             </div>
         </div>
     );
