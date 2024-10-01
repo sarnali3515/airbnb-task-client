@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import Slider from 'react-slick';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import Container from '../Shared/Container';
@@ -10,7 +11,7 @@ import "slick-carousel/slick/slick-theme.css";
 const PrevArrow = ({ onClick }) => (
     <button
         onClick={onClick}
-        className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-white p-2 rounded-full  z-10 hover:bg-gray-200 transition border-2"
+        className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-white p-2 rounded-full z-10 hover:bg-gray-200 transition border-2"
         style={{ zIndex: 2 }}
     >
         <FaChevronLeft size={20} />
@@ -21,7 +22,7 @@ const PrevArrow = ({ onClick }) => (
 const NextArrow = ({ onClick }) => (
     <button
         onClick={onClick}
-        className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-white p-2 rounded-full  z-10 hover:bg-gray-200 transition border-2"
+        className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-white p-2 rounded-full z-10 hover:bg-gray-200 transition border-2"
         style={{ zIndex: 2 }}
     >
         <FaChevronRight size={20} />
@@ -29,7 +30,20 @@ const NextArrow = ({ onClick }) => (
 );
 
 const Categories = () => {
-    // Slider
+    const [isScrolled, setIsScrolled] = useState(false);
+
+    // Handle scroll event
+    const handleScroll = () => {
+        const offset = window.scrollY;
+        setIsScrolled(offset > 150); // Adjust the threshold as needed
+    };
+
+    useEffect(() => {
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+
+    // Slider settings
     const settings = {
         dots: false,
         infinite: true,
@@ -56,7 +70,7 @@ const Categories = () => {
 
     return (
         <Container>
-            <div className="relative pt-28">
+            <div className={`relative transition-all ${isScrolled ? 'pt-0' : 'pt-28'}`}>
                 {/* Slider container */}
                 <Slider {...settings}>
                     {categories.map((item) => (
