@@ -56,7 +56,7 @@ const Categories = () => {
 
     return (
         <Container>
-            <div className="relative pt-4">
+            <div className="relative pt-28">
                 {/* Slider container */}
                 <Slider {...settings}>
                     {categories.map((item) => (

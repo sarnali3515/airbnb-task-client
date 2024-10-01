@@ -122,21 +122,6 @@ export const categories = [
         icon: GiSurfBoard,
         description: 'This property is great for surfing!',
     },
-    // {
-    //     label: 'Earth homes',
-    //     icon: GiHouse,
-    //     description: 'This property is an earth home!',
-    // },
-    // {
-    //     label: 'A-frames',
-    //     icon: GiHouse,
-    //     description: 'This property is an A-frame home!',
-    // },
-    // {
-    //     label: 'Historical homes',
-    //     icon: GiCastle,
-    //     description: 'This property is a historical home!',
-    // },
     {
         label: 'Vineyards',
         icon: GiVineLeaf,
