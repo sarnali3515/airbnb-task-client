@@ -1,4 +1,4 @@
-import { TbBeach, TbMountain, TbPool } from 'react-icons/tb'
+import { TbBeach, TbMountain, TbPool } from 'react-icons/tb';
 import {
     GiBarn,
     GiBoatFishing,
@@ -8,11 +8,17 @@ import {
     GiForestCamp,
     GiIsland,
     GiWindmill,
-} from 'react-icons/gi'
-import { FaSkiing } from 'react-icons/fa'
-import { BsSnow } from 'react-icons/bs'
-import { IoDiamond } from 'react-icons/io5'
-import { MdOutlineVilla } from 'react-icons/md'
+    GiTreehouse,
+    GiVineLeaf,
+    GiSurfBoard,
+    GiFarmTractor,
+    GiCampingTent,
+    GiHouse,
+} from 'react-icons/gi';
+import { FaSkiing } from 'react-icons/fa';
+import { BsSnow } from 'react-icons/bs';
+import { IoDiamond } from 'react-icons/io5';
+import { MdOutlineVilla } from 'react-icons/md';
 
 export const categories = [
     {
@@ -23,7 +29,7 @@ export const categories = [
     {
         label: 'Windmills',
         icon: GiWindmill,
-        description: 'This property is has windmills!',
+        description: 'This property has windmills!',
     },
     {
         label: 'Modern',
@@ -38,7 +44,7 @@ export const categories = [
     {
         label: 'Pools',
         icon: TbPool,
-        description: 'This is property has a beautiful pool!',
+        description: 'This property has a beautiful pool!',
     },
     {
         label: 'Islands',
@@ -73,7 +79,7 @@ export const categories = [
     {
         label: 'Arctic',
         icon: BsSnow,
-        description: 'This property is in arctic environment!',
+        description: 'This property is in an arctic environment!',
     },
     {
         label: 'Desert',
@@ -90,4 +96,50 @@ export const categories = [
         icon: IoDiamond,
         description: 'This property is brand new and luxurious!',
     },
-]
+    // New Categories
+    {
+        label: 'Trending',
+        icon: GiHouse,
+        description: 'This property is trending right now!',
+    },
+    {
+        label: 'Treehouses',
+        icon: GiTreehouse,
+        description: 'This property is a treehouse!',
+    },
+    {
+        label: 'Farms',
+        icon: GiFarmTractor,
+        description: 'This property is located on a farm!',
+    },
+    {
+        label: 'Campers',
+        icon: GiCampingTent,
+        description: 'This property offers camper accommodations!',
+    },
+    {
+        label: 'Surfing',
+        icon: GiSurfBoard,
+        description: 'This property is great for surfing!',
+    },
+    // {
+    //     label: 'Earth homes',
+    //     icon: GiHouse,
+    //     description: 'This property is an earth home!',
+    // },
+    // {
+    //     label: 'A-frames',
+    //     icon: GiHouse,
+    //     description: 'This property is an A-frame home!',
+    // },
+    // {
+    //     label: 'Historical homes',
+    //     icon: GiCastle,
+    //     description: 'This property is a historical home!',
+    // },
+    {
+        label: 'Vineyards',
+        icon: GiVineLeaf,
+        description: 'This property is located in a vineyard!',
+    },
+];
