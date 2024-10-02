@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { FiSearch } from 'react-icons/fi';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
@@ -22,6 +22,10 @@ const FilterSearchBox = ({ isScrolled }) => {
         infants: 0,
         pets: 0,
     });
+
+    // Create refs for dropdowns
+    const destinationDropdownRef = useRef(null);
+    const guestsDropdownRef = useRef(null);
 
     // Images for each region (locally loaded)
     const regionImages = {
@@ -54,13 +58,32 @@ const FilterSearchBox = ({ isScrolled }) => {
         setCheckOutDate(date);
     };
 
+    // Close dropdowns when clicking outside
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (destinationDropdownRef.current && !destinationDropdownRef.current.contains(event.target)) {
+                setShowDestinationDropdown(false);
+            }
+            if (guestsDropdownRef.current && !guestsDropdownRef.current.contains(event.target)) {
+                setShowGuestsDropdown(false);
+            }
+        };
+
+        // Bind the event listener
+        document.addEventListener('mousedown', handleClickOutside);
+
+        // Clean up the event listener on component unmount
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, []);
+
     return (
         <div
             className={`w-full max-w-3xl mx-auto bg-white rounded-full border shadow-md transition-all duration-300 mb-5 ${isScrolled ? 'fixed top-4 left-1/2 transform -translate-x-1/2 max-w-md z-20' : 'mt-8'
                 }`}
         >
             <div className={`flex justify-between items-center ${isScrolled ? 'px-2 py-1' : 'px-4 py-2'}`}>
-
                 {/* Location - Smaller on scroll */}
                 <div className={`flex-1 border-r px-4 relative ${isScrolled ? 'text-sm' : 'text-base'}`}>
                     <label className="font-semibold">{isScrolled ? 'Anywhere' : 'Where'}</label>
@@ -74,7 +97,7 @@ const FilterSearchBox = ({ isScrolled }) => {
                     )}
                     {/* Destination Dropdown */}
                     {showDestinationDropdown && (
-                        <div className="absolute top-12 left-0 bg-white border rounded-lg p-4 shadow-md w-[400px] z-30">
+                        <div ref={destinationDropdownRef} className="absolute top-12 left-0 bg-white border rounded-lg p-4 shadow-md w-[400px] z-30">
                             <div className="grid grid-cols-3 gap-4">
                                 {Object.keys(regionImages).map((region) => (
                                     <div
@@ -111,8 +134,7 @@ const FilterSearchBox = ({ isScrolled }) => {
                     )}
                 </div>
 
-                {
-                    !isScrolled &&
+                {!isScrolled &&
                     <div className={`flex-1 border-r px-4 relative ${isScrolled ? 'text-sm' : 'text-base'}`}>
                         <label className="font-semibold">{isScrolled ? 'Any week' : 'Check out'}</label>
                         {!isScrolled && (
@@ -143,32 +165,108 @@ const FilterSearchBox = ({ isScrolled }) => {
                         />
                     )}
                     {/* Guests Dropdown */}
+                    {/* Guests Dropdown */}
                     {showGuestsDropdown && (
-                        <div className="absolute top-12 left-0 bg-white border rounded-lg p-4 shadow-md w-[400px] z-30">
-                            <div className="space-y-2">
-                                {['Adults', 'Children', 'Infants', 'Pets'].map((guestType) => (
-                                    <div key={guestType} className="flex justify-between items-center">
-                                        <span>{guestType}</span>
-                                        <div className="flex items-center space-x-2">
-                                            <button
-                                                onClick={() => setGuests({ ...guests, [guestType.toLowerCase()]: Math.max(0, guests[guestType.toLowerCase()] - 1) })}
-                                                className="px-2 py-1 bg-gray-200 rounded-md"
-                                            >
-                                                -
-                                            </button>
-                                            <span>{guests[guestType.toLowerCase()]}</span>
-                                            <button
-                                                onClick={() => setGuests({ ...guests, [guestType.toLowerCase()]: guests[guestType.toLowerCase()] + 1 })}
-                                                className="px-2 py-1 bg-gray-200 rounded-md"
-                                            >
-                                                +
-                                            </button>
-                                        </div>
+                        <div ref={guestsDropdownRef} className="absolute top-12 left-0 bg-white border rounded-lg p-4 shadow-md w-[400px] z-30">
+                            <div className="space-y-4">
+                                {/* Adults Section */}
+                                <div className="flex justify-between items-center">
+                                    <div>
+                                        <span className="font-semibold">Adults</span>
+                                        <p className="text-sm text-gray-500">Ages 13 or above</p>
                                     </div>
-                                ))}
+                                    <div className="flex items-center space-x-2">
+                                        <button
+                                            onClick={() => setGuests({ ...guests, adults: Math.max(0, guests.adults - 1) })}
+                                            className="px-3 py-1 bg-gray-200 rounded-full"
+                                        >
+                                            -
+                                        </button>
+                                        <span>{guests.adults}</span>
+                                        <button
+                                            onClick={() => setGuests({ ...guests, adults: guests.adults + 1 })}
+                                            className="px-3 py-1 bg-gray-200 rounded-full"
+                                        >
+                                            +
+                                        </button>
+                                    </div>
+                                </div>
+                                <hr />
+
+                                {/* Children Section */}
+                                <div className="flex justify-between items-center">
+                                    <div>
+                                        <span className="font-semibold">Children</span>
+                                        <p className="text-sm text-gray-500">Ages 2 – 12</p>
+                                    </div>
+                                    <div className="flex items-center space-x-2">
+                                        <button
+                                            onClick={() => setGuests({ ...guests, children: Math.max(0, guests.children - 1) })}
+                                            className="px-3 py-1 bg-gray-200 rounded-full"
+                                        >
+                                            -
+                                        </button>
+                                        <span>{guests.children}</span>
+                                        <button
+                                            onClick={() => setGuests({ ...guests, children: guests.children + 1 })}
+                                            className="px-3 py-1 bg-gray-200 rounded-full"
+                                        >
+                                            +
+                                        </button>
+                                    </div>
+                                </div>
+                                <hr />
+
+                                {/* Infants Section */}
+                                <div className="flex justify-between items-center">
+                                    <div>
+                                        <span className="font-semibold">Infants</span>
+                                        <p className="text-sm text-gray-500">Under 2</p>
+                                    </div>
+                                    <div className="flex items-center space-x-2">
+                                        <button
+                                            onClick={() => setGuests({ ...guests, infants: Math.max(0, guests.infants - 1) })}
+                                            className="px-3 py-1 bg-gray-200 rounded-full"
+                                        >
+                                            -
+                                        </button>
+                                        <span>{guests.infants}</span>
+                                        <button
+                                            onClick={() => setGuests({ ...guests, infants: guests.infants + 1 })}
+                                            className="px-3 py-1 bg-gray-200 rounded-full"
+                                        >
+                                            +
+                                        </button>
+                                    </div>
+                                </div>
+                                <hr />
+
+                                {/* Pets Section */}
+                                <div className="flex justify-between items-center">
+                                    <div>
+                                        <span className="font-semibold">Pets</span>
+                                        <p className="text-sm text-gray-500 underline">Bringing a service animal?</p>
+                                    </div>
+                                    <div className="flex items-center space-x-2">
+                                        <button
+                                            onClick={() => setGuests({ ...guests, pets: Math.max(0, guests.pets - 1) })}
+                                            className="px-3 py-1 bg-gray-200 rounded-full"
+                                        >
+                                            -
+                                        </button>
+                                        <span>{guests.pets}</span>
+                                        <button
+                                            onClick={() => setGuests({ ...guests, pets: guests.pets + 1 })}
+                                            className="px-3 py-1 bg-gray-200 rounded-full"
+                                        >
+                                            +
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     )}
+
                 </div>
 
                 {/* Search Button */}
