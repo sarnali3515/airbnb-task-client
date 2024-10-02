@@ -5,7 +5,7 @@ import { FaStar, FaChevronLeft, FaChevronRight, FaHeart } from 'react-icons/fa';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-// Prev Arrow Component 
+// Prev Arrow Component
 const PrevArrow = ({ onClick }) => (
     <button
         onClick={onClick}
@@ -16,7 +16,7 @@ const PrevArrow = ({ onClick }) => (
     </button>
 );
 
-// Next Arrow Component 
+// Next Arrow Component
 const NextArrow = ({ onClick }) => (
     <button
         onClick={onClick}
@@ -40,9 +40,17 @@ const Card = ({ room }) => {
         prevArrow: <PrevArrow />,
     };
 
+    // Formatting the date for display (e.g., "Oct 3 - 8")
+    const fromDate = new Date(room.from);
+    const toDate = new Date(room.to);
+    const options = { month: 'short', day: 'numeric' };
+
+    const formattedFrom = new Intl.DateTimeFormat('en-US', options).format(fromDate);
+    const formattedToDay = toDate.getDate(); // Just the day of the 'to' date
+
     return (
         <Link to={`/room/${room?._id}`} className='col-span-1 cursor-pointer group'>
-            <div className='flex flex-col gap-2 w-full'>
+            <div className='flex flex-col  w-full'>
                 {/* Image slider */}
                 <div className='aspect-square w-full relative overflow-hidden rounded-xl'>
                     {images.length > 0 ? (
@@ -72,23 +80,25 @@ const Card = ({ room }) => {
                             style={{ fontSize: '30px', borderRadius: '8px' }}
                         />
                     </div>
-
-
                 </div>
 
                 {/* Room details */}
-                <div className='flex justify-between'>
+                <div className='flex justify-between mt-2'>
                     <div className='font-semibold text-lg'>{room?.category}, {room?.country}</div>
                     <div className='flex items-center'>
                         <FaStar className='mr-1' /> {room?.ratings}
                     </div>
                 </div>
 
-                <div className='flex flex-row items-center gap-1'>
-                    <div className='font-semibold'>$ {room?.price}</div>
-                    <div className='font-light'> night</div>
+                {/* date  */}
+                <div className=' text-neutral-500'>
+                    {formattedFrom} - {formattedToDay}
                 </div>
 
+                <div className='flex flex-row items-center gap-1'>
+                    <div className='font-semibold'>${room?.price}</div>
+                    <div> night</div>
+                </div>
             </div>
         </Link>
     );
@@ -102,6 +112,8 @@ Card.propTypes = {
         price: PropTypes.string.isRequired,
         ratings: PropTypes.number.isRequired,
         images: PropTypes.object,
+        from: PropTypes.string.isRequired,
+        to: PropTypes.string.isRequired,
     }).isRequired,
 };
 
