@@ -4,11 +4,11 @@ const CategoryBox = ({ label, icon: Icon, isSelected, onClick }) => {
     return (
         <div
             onClick={onClick}
-            className={`cursor-pointer flex flex-col items-center justify-center gap-2 p-4 border-b-4 
+            className={`cursor-pointer flex flex-col items-center justify-center gap-2 m-3 border-b-2 
                         ${isSelected ? 'border-black' : 'border-transparent'} 
                         hover:border-gray-400 transition`}
         >
-            <Icon size={26} />
+            <Icon size={24} />
             <div className="font-medium text-sm">{label}</div>
         </div>
     );
