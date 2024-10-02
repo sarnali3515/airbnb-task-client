@@ -1,24 +1,17 @@
+import React from 'react';
 
-const CategoryBox = ({ label, icon: Icon }) => {
+const CategoryBox = ({ label, icon: Icon, isSelected, onClick }) => {
     return (
         <div
-            className={`flex 
-  flex-col 
-  items-center 
-  justify-center 
-  gap-2
-  p-3
-  border-b-2
-  hover:text-neutral-800
-  transition
-  cursor-pointer`}
+            onClick={onClick}
+            className={`cursor-pointer flex flex-col items-center justify-center gap-2 p-4 border-b-4 
+                        ${isSelected ? 'border-black' : 'border-transparent'} 
+                        hover:border-gray-400 transition`}
         >
             <Icon size={26} />
-            <div className='text-sm font-medium'>{label}</div>
+            <div className="font-medium text-sm">{label}</div>
         </div>
-    )
-}
+    );
+};
 
-
-
-export default CategoryBox
+export default CategoryBox;

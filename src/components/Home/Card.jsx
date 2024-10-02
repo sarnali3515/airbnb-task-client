@@ -84,7 +84,7 @@ const Card = ({ room }) => {
 
                 {/* Room details */}
                 <div className='flex justify-between mt-2'>
-                    <div className='font-semibold text-lg'>{room?.category}, {room?.country}</div>
+                    <div className='font-semibold text-lg'>{room?.location}</div>
                     <div className='flex items-center'>
                         <FaStar className='mr-1' /> {room?.ratings}
                     </div>
@@ -107,7 +107,7 @@ const Card = ({ room }) => {
 Card.propTypes = {
     room: PropTypes.shape({
         _id: PropTypes.string.isRequired,
-        category: PropTypes.string.isRequired,
+        location: PropTypes.string.isRequired,
         country: PropTypes.string.isRequired,
         price: PropTypes.string.isRequired,
         ratings: PropTypes.number.isRequired,

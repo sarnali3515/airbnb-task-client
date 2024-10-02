@@ -29,13 +29,14 @@ const NextArrow = ({ onClick }) => (
     </button>
 );
 
-const Categories = () => {
+const Categories = ({ onCategorySelect }) => {
     const [isScrolled, setIsScrolled] = useState(false);
+    const [selectedCategory, setSelectedCategory] = useState('All'); // Default category
 
     // Handle scroll event
     const handleScroll = () => {
         const offset = window.scrollY;
-        setIsScrolled(offset > 150); // Adjust the threshold as needed
+        setIsScrolled(offset > 150);
     };
 
     useEffect(() => {
@@ -43,7 +44,7 @@ const Categories = () => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    // Slider settings
+    // Slider 
     const settings = {
         dots: false,
         infinite: true,
@@ -68,13 +69,24 @@ const Categories = () => {
         ],
     };
 
+    const handleCategoryClick = (categoryLabel) => {
+        setSelectedCategory(categoryLabel);
+        onCategorySelect(categoryLabel);
+    };
+
     return (
         <Container>
             <div className={`relative transition-all ${isScrolled ? 'pt-0' : 'pt-28'}`}>
                 {/* Slider container */}
                 <Slider {...settings}>
                     {categories.map((item) => (
-                        <CategoryBox key={item.label} label={item.label} icon={item.icon} />
+                        <div key={item.label} onClick={() => handleCategoryClick(item.label)}>
+                            <CategoryBox
+                                label={item.label}
+                                icon={item.icon}
+                                isSelected={selectedCategory === item.label}
+                            />
+                        </div>
                     ))}
                 </Slider>
             </div>

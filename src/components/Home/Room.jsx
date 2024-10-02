@@ -3,7 +3,7 @@ import Card from './Card';
 import Container from '../Shared/Container';
 import Heading from '../Shared/Heading';
 
-const Rooms = () => {
+const Rooms = ({ selectedCategory }) => {
     const [rooms, setRooms] = useState([]);
     const [loading, setLoading] = useState(false);
 
@@ -11,24 +11,29 @@ const Rooms = () => {
         setLoading(true);
         // Fetch data from the backend API
         fetch('http://localhost:5000/rooms')
-            .then(res => res.json())
-            .then(data => {
+            .then((res) => res.json())
+            .then((data) => {
                 setRooms(data);
                 setLoading(false);
             })
-            .catch(error => {
+            .catch((error) => {
                 console.error('Error fetching rooms:', error);
                 setLoading(false);
             });
     }, []);
 
+    // Filter rooms based on the selected category
+    const filteredRooms = selectedCategory === 'All'
+        ? rooms
+        : rooms.filter(room => room.category === selectedCategory);
+
     if (loading) return <p className='text-center'>Loading......</p>;
 
     return (
         <Container>
-            {rooms && rooms.length > 0 ? (
+            {filteredRooms && filteredRooms.length > 0 ? (
                 <div className='pt-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4  2xl:grid-cols-5 gap-8'>
-                    {rooms.map(room => (
+                    {filteredRooms.map(room => (
                         <Card key={room._id} room={room} />
                     ))}
                 </div>
