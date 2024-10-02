@@ -59,7 +59,7 @@ const Navbar = () => {
                         {/* Dropdown Menu */}
                         <div className="relative">
                             <div className="flex flex-row items-center gap-3">
-                                {/* Become a host */}
+
                                 <button className="hidden md:block hover:bg-neutral-100 py-3 px-4 text-sm font-semibold rounded-full transition">
                                     Airbnb your home
                                 </button>

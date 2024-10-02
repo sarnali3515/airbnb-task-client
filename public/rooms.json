@@ -1,59 +1,192 @@
 [
     {
-        "_id": "664717d3e6931ab2b2a35655",
-        "location": "Pattaya, Thailand",
-        "category": "Beach",
-        "title": "A15 thebase Sky Pool 1 Bedroom 1/1/Downtown Direct Beach",
-        "to": "2024-05-21T18:00:00.000Z",
-        "from": "2024-05-19T18:00:00.000Z",
-        "price": "100",
-        "guests": "2",
+        "location": "Mykonos, Greece",
+        "category": "Islands",
+        "country": "Greece",
+        "region": "Europe",
+        "title": "Luxury Villa with Sea View on Mykonos Island",
+        "to": "2024-07-15T18:00:00.000Z",
+        "from": "2024-07-10T18:00:00.000Z",
+        "price": "500",
+        "guests": "6",
+        "bathrooms": "3",
+        "beds": "4",
+        "bedrooms": "3",
+        "ratings": 5,
+        "images": {
+            "image1": "https://i.ibb.co/xMbTbYX/mykonos-villa.jpg",
+            "image2": "https://i.ibb.co/7b3hYms/mykonos-pool.jpg"
+        }
+    },
+    {
+        "location": "Reykjavik, Iceland",
+        "category": "Arctic",
+        "country": "Iceland",
+        "region": "Europe",
+        "title": "Cozy Cottage in the Arctic with a Stunning View",
+        "to": "2024-12-20T18:00:00.000Z",
+        "from": "2024-12-15T18:00:00.000Z",
+        "price": "200",
+        "guests": "4",
         "bathrooms": "1",
+        "beds": "2",
         "bedrooms": "1",
-        "host": {
-            "name": "Shakil Ahmed Atik",
-            "image": "https://lh3.googleusercontent.com/a/ACg8ocJL_MZYn95fgATgHT_bWH8Em42gc8quAT57rhhHo4w9-lc-x8G-=s96-c",
-            "email": "shakilatik.ph@gmail.com"
-        },
-        "description": "Seamlessly evisculate frictionless e-markets through tactical interfaces. Holisticly visualize viral potentialities without mission-critical services.",
-        "image": "https://i.ibb.co/BsLQWH6/992ceffe-86d2-42b0-93b8-c24427806cca.webp"
+        "ratings": 4.5,
+        "images": {
+            "image1": "https://i.ibb.co/4t9Pb2P/iceland-cottage.jpg",
+            "image2": "https://i.ibb.co/Fm7Pqk8/northern-lights.jpg"
+        }
     },
     {
-        "_id": "6647188ee6931ab2b2a35656",
-        "location": "Theog, India",
-        "category": "Countryside",
-        "title": "Deori Room 1BR Daafi w/Mountain View",
-        "to": "2024-05-30T18:00:00.000Z",
-        "from": "2024-05-27T18:00:00.000Z",
-        "price": "50",
-        "guests": "3",
-        "bathrooms": "2",
-        "bedrooms": "2",
-        "host": {
-            "name": "Shakil Ahmed Atik",
-            "image": "https://lh3.googleusercontent.com/a/ACg8ocJL_MZYn95fgATgHT_bWH8Em42gc8quAT57rhhHo4w9-lc-x8G-=s96-c",
-            "email": "shakilatik.ph@gmail.com"
-        },
-        "description": "Credibly incentivize stand-alone technology rather than unique convergence. Intrinsicly incentivize distinctive niche markets for.",
-        "image": "https://i.ibb.co/Ptxx4q2/15110762-267f-4a08-88ae-2d9d3603284d.webp"
-    },
-    {
-        "_id": "664718fde6931ab2b2a35657",
-        "location": "Kamiminochi, Japan",
-        "category": "Desert",
-        "title": "Anoie home with a private sauna with spectacular views of Lake Nojiri",
-        "to": "2024-06-04T18:00:00.000Z",
-        "from": "2024-05-31T18:00:00.000Z",
-        "price": "140",
+        "location": "Bali, Indonesia",
+        "category": "Pools",
+        "country": "Indonesia",
+        "region": "Southeast Asia",
+        "title": "Private Villa with Infinity Pool in Bali",
+        "to": "2024-08-10T18:00:00.000Z",
+        "from": "2024-08-05T18:00:00.000Z",
+        "price": "350",
         "guests": "4",
         "bathrooms": "2",
+        "beds": "2",
         "bedrooms": "2",
-        "host": {
-            "name": "Shakil Ahmed Atik",
-            "image": "https://lh3.googleusercontent.com/a/ACg8ocJL_MZYn95fgATgHT_bWH8Em42gc8quAT57rhhHo4w9-lc-x8G-=s96-c",
-            "email": "shakilatik.ph@gmail.com"
-        },
-        "description": "Efficiently coordinate flexible synergy and backward-compatible content. Energistically brand market-driven e-tailers for business models.",
-        "image": "https://i.ibb.co/Gp0Svsb/b2c0f556-f726-4db8-985f-25a668369fe7.webp"
+        "ratings": 4.8,
+        "images": {
+            "image1": "https://i.ibb.co/QdWLQ9B/bali-villa.jpg",
+            "image2": "https://i.ibb.co/DW7VrRK/bali-pool.jpg"
+        }
+    },
+    {
+        "location": "Banff, Canada",
+        "category": "Skiing",
+        "country": "Canada",
+        "region": "Canada",
+        "title": "Ski Chalet with Mountain View in Banff",
+        "to": "2024-02-15T18:00:00.000Z",
+        "from": "2024-02-10T18:00:00.000Z",
+        "price": "400",
+        "guests": "8",
+        "bathrooms": "3",
+        "beds": "5",
+        "bedrooms": "4",
+        "ratings": 5,
+        "images": {
+            "image1": "https://i.ibb.co/ZXx9hfd/banff-chalet.jpg",
+            "image2": "https://i.ibb.co/6gcpWN0/skiing-view.jpg"
+        }
+    },
+    {
+        "location": "Malibu, United States",
+        "category": "Surfing",
+        "country": "United States",
+        "region": "United States",
+        "title": "Beach House with Private Access to Surfing Spots",
+        "to": "2024-09-05T18:00:00.000Z",
+        "from": "2024-09-01T18:00:00.000Z",
+        "price": "600",
+        "guests": "5",
+        "bathrooms": "2",
+        "beds": "3",
+        "bedrooms": "2",
+        "ratings": 4.9,
+        "images": {
+            "image1": "https://i.ibb.co/pv3B3tk/malibu-beach.jpg",
+            "image2": "https://i.ibb.co/2dHrMfB/surfing-malibu.jpg"
+        }
+    },
+    {
+        "location": "Chiang Mai, Thailand",
+        "category": "Countryside",
+        "country": "Thailand",
+        "region": "Southeast Asia",
+        "title": "Rustic Countryside Retreat in Chiang Mai",
+        "to": "2024-11-05T18:00:00.000Z",
+        "from": "2024-11-01T18:00:00.000Z",
+        "price": "150",
+        "guests": "4",
+        "bathrooms": "1",
+        "beds": "2",
+        "bedrooms": "2",
+        "ratings": 4.3,
+        "images": {
+            "image1": "https://i.ibb.co/Yb2L9wb/chiang-mai-retreat.jpg",
+            "image2": "https://i.ibb.co/xHP3rrx/chiang-mai-countryside.jpg"
+        }
+    },
+    {
+        "location": "Santorini, Greece",
+        "category": "Lux",
+        "country": "Greece",
+        "region": "Europe",
+        "title": "Luxurious Cliffside Villa with Caldera View",
+        "to": "2024-06-20T18:00:00.000Z",
+        "from": "2024-06-15T18:00:00.000Z",
+        "price": "800",
+        "guests": "6",
+        "bathrooms": "3",
+        "beds": "3",
+        "bedrooms": "3",
+        "ratings": 5,
+        "images": {
+            "image1": "https://i.ibb.co/qCnBdKj/santorini-villa.jpg",
+            "image2": "https://i.ibb.co/FXg7Kbm/santorini-view.jpg"
+        }
+    },
+    {
+        "location": "Lake Tahoe, United States",
+        "category": "Lake",
+        "country": "United States",
+        "region": "United States",
+        "title": "Cabin by Lake Tahoe with Private Dock",
+        "to": "2024-07-10T18:00:00.000Z",
+        "from": "2024-07-05T18:00:00.000Z",
+        "price": "300",
+        "guests": "6",
+        "bathrooms": "2",
+        "beds": "3",
+        "bedrooms": "3",
+        "ratings": 4.7,
+        "images": {
+            "image1": "https://i.ibb.co/vx2Y5cs/lake-tahoe-cabin.jpg",
+            "image2": "https://i.ibb.co/J7nVwBr/lake-tahoe-dock.jpg"
+        }
+    },
+    {
+        "location": "Perth, Australia",
+        "category": "Windmills",
+        "country": "Australia",
+        "region": "Southeast Asia",
+        "title": "Countryside Windmill Farm Stay near Perth",
+        "to": "2024-10-15T18:00:00.000Z",
+        "from": "2024-10-10T18:00:00.000Z",
+        "price": "180",
+        "guests": "4",
+        "bathrooms": "1",
+        "beds": "2",
+        "bedrooms": "2",
+        "ratings": 4.4,
+        "images": {
+            "image1": "https://i.ibb.co/k1K9JgM/perth-windmill.jpg",
+            "image2": "https://i.ibb.co/cvD3VZd/windmill-farm.jpg"
+        }
+    },
+    {
+        "location": "Sedona, United States",
+        "category": "Desert",
+        "country": "United States",
+        "region": "United States",
+        "title": "Desert Retreat with Amazing Red Rock Views",
+        "to": "2024-09-15T18:00:00.000Z",
+        "from": "2024-09-10T18:00:00.000Z",
+        "price": "220",
+        "guests": "4",
+        "bathrooms": "2",
+        "beds": "2",
+        "bedrooms": "2",
+        "ratings": 4.6,
+        "images": {
+            "image1": "https://i.ibb.co/4WfV9Fg/sedona-desert.jpg",
+            "image2": "https://i.ibb.co/WFsQ6Rt/red-rock-view.jpg"
+        }
     }
 ]

@@ -1,24 +1,28 @@
-import { useEffect, useState } from 'react'
-import Card from './Card'
-import Container from '../Shared/Container'
-import Heading from '../Shared/Heading'
-// import LoadingSpinner from '../Shared/LoadingSpinner'
+import { useEffect, useState } from 'react';
+import Card from './Card';
+import Container from '../Shared/Container';
+import Heading from '../Shared/Heading';
 
 const Rooms = () => {
-    const [rooms, setRooms] = useState([])
-    const [loading, setLoading] = useState(false)
+    const [rooms, setRooms] = useState([]);
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
-        setLoading(true)
-        fetch(`./rooms.json`)
+        setLoading(true);
+        // Fetch data from the backend API
+        fetch('http://localhost:5000/rooms')
             .then(res => res.json())
             .then(data => {
-                setRooms(data)
-                setLoading(false)
+                setRooms(data);
+                setLoading(false);
             })
-    }, [])
+            .catch(error => {
+                console.error('Error fetching rooms:', error);
+                setLoading(false);
+            });
+    }, []);
 
-    if (loading) return <p className='text-center'>Loading......</p>
+    if (loading) return <p className='text-center'>Loading......</p>;
 
     return (
         <Container>
@@ -38,7 +42,7 @@ const Rooms = () => {
                 </div>
             )}
         </Container>
-    )
-}
+    );
+};
 
-export default Rooms
+export default Rooms;

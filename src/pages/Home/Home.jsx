@@ -6,11 +6,11 @@ import Rooms from '../../components/Home/Room';
 const Home = () => {
     const [isCategorySticky, setIsCategorySticky] = useState(false);
 
-    // Handle scroll event for the Categories section
+    // Handle scroll event for Categories
     const handleScroll = () => {
         const categorySection = document.querySelector('.categories-section');
         if (window.scrollY > categorySection?.offsetTop - 80) {
-            // Adjust offset value based on your navbar height
+
             setIsCategorySticky(true);
         } else {
             setIsCategorySticky(false);
@@ -33,7 +33,7 @@ const Home = () => {
                 className={`categories-section ${isCategorySticky ? 'fixed top-16 w-full bg-white shadow-md z-10' : ''}`}
                 style={{
                     position: isCategorySticky ? 'fixed' : 'relative',
-                    top: isCategorySticky ? '80px' : 'initial', // Adjust this value based on your navbar height
+                    top: isCategorySticky ? '80px' : 'initial', 
                     width: '100%',
                     backgroundColor: isCategorySticky ? 'white' : 'transparent',
                     transition: 'top 0.3s ease',
