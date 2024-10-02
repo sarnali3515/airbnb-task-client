@@ -72,34 +72,40 @@ const FilterSearchBox = ({ isScrolled }) => {
                     )}
                 </div>
 
-                {/* Check-in */}
+                {/* Check-in and Check-out */}
                 <div className={`flex-1 border-r px-4 relative ${isScrolled ? 'text-sm' : 'text-base'}`}>
                     <label className="font-semibold">{isScrolled ? 'Any week' : 'Check in'}</label>
-                    <DatePicker
-                        selected={checkInDate}
-                        onChange={handleCheckInDateChange}
-                        selectsStart
-                        startDate={checkInDate}
-                        endDate={checkOutDate}
-                        placeholderText="Add dates"
-                        className="focus:outline-none text-sm w-full"
-                    />
+                    {!isScrolled && (
+                        <DatePicker
+                            selected={checkInDate}
+                            onChange={handleCheckInDateChange}
+                            selectsStart
+                            startDate={checkInDate}
+                            endDate={checkOutDate}
+                            placeholderText="Add dates"
+                            className="focus:outline-none text-sm w-full"
+                        />
+                    )}
                 </div>
 
-                {/* Check-out */}
-                <div className={`flex-1 border-r px-4 relative ${isScrolled ? 'text-sm' : 'text-base'}`}>
-                    <label className="font-semibold">{isScrolled ? 'Any week' : 'Check out'}</label>
-                    <DatePicker
-                        selected={checkOutDate}
-                        onChange={handleCheckOutDateChange}
-                        selectsEnd
-                        startDate={checkInDate}
-                        endDate={checkOutDate}
-                        minDate={checkInDate}
-                        placeholderText="Add dates"
-                        className="focus:outline-none text-sm w-full"
-                    />
-                </div>
+                {
+                    !isScrolled &&
+                    <div className={`flex-1 border-r px-4 relative ${isScrolled ? 'text-sm' : 'text-base'}`}>
+                        <label className="font-semibold">{isScrolled ? 'Any week' : 'Check out'}</label>
+                        {!isScrolled && (
+                            <DatePicker
+                                selected={checkOutDate}
+                                onChange={handleCheckOutDateChange}
+                                selectsEnd
+                                startDate={checkInDate}
+                                endDate={checkOutDate}
+                                minDate={checkInDate}
+                                placeholderText="Add dates"
+                                className="focus:outline-none text-sm w-full"
+                            />
+                        )}
+                    </div>
+                }
 
                 {/* Guests */}
                 <div className={`flex-1 px-4 relative ${isScrolled ? 'text-sm' : 'text-base'}`}>
@@ -117,7 +123,7 @@ const FilterSearchBox = ({ isScrolled }) => {
                     {showGuestsDropdown && (
                         <div className="absolute top-12 left-0 bg-white border rounded-lg p-4 shadow-md w-[400px] z-30">
                             <div className="space-y-2">
-                                {['Adults', 'Children', 'Infants', 'Pets'].map((guestType, index) => (
+                                {['Adults', 'Children', 'Infants', 'Pets'].map((guestType) => (
                                     <div key={guestType} className="flex justify-between items-center">
                                         <span>{guestType}</span>
                                         <div className="flex items-center space-x-2">
