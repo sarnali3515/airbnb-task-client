@@ -3,6 +3,14 @@ import { FiSearch } from 'react-icons/fi';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
+// Import the images from assets/images folder
+import allImage from '../../assets/images/all.jpg';
+import asiaImage from '../../assets/images/asia.webp';
+import canadaImage from '../../assets/images/canada.webp';
+import europeImage from '../../assets/images/europe.webp';
+import malaysiaImage from '../../assets/images/malaysia.webp';
+import usaImage from '../../assets/images/usa.webp';
+
 const FilterSearchBox = ({ isScrolled }) => {
     const [showDestinationDropdown, setShowDestinationDropdown] = useState(false);
     const [showGuestsDropdown, setShowGuestsDropdown] = useState(false);
@@ -14,6 +22,16 @@ const FilterSearchBox = ({ isScrolled }) => {
         infants: 0,
         pets: 0,
     });
+
+    // Images for each region (locally loaded)
+    const regionImages = {
+        "I'm flexible": allImage,
+        "Southeast Asia": asiaImage,
+        "Canada": canadaImage,
+        "Europe": europeImage,
+        "Malaysia": malaysiaImage,
+        "United States": usaImage,
+    };
 
     // Handle destination dropdown toggle
     const toggleDestinationDropdown = () => {
@@ -58,13 +76,18 @@ const FilterSearchBox = ({ isScrolled }) => {
                     {showDestinationDropdown && (
                         <div className="absolute top-12 left-0 bg-white border rounded-lg p-4 shadow-md w-[400px] z-30">
                             <div className="grid grid-cols-3 gap-4">
-                                {['I\'m flexible', 'Southeast Asia', 'Canada', 'Europe', 'Malaysia', 'United States'].map((region) => (
+                                {Object.keys(regionImages).map((region) => (
                                     <div
                                         key={region}
                                         className="cursor-pointer hover:bg-gray-200 p-2 rounded-lg text-center"
                                         onClick={() => setShowDestinationDropdown(false)}
                                     >
-                                        {region}
+                                        <img
+                                            src={regionImages[region]}
+                                            alt={region}
+                                            className="w-full h-24 border object-cover rounded-lg mb-2"
+                                        />
+                                        <span className='text-sm'>{region}</span>
                                     </div>
                                 ))}
                             </div>
