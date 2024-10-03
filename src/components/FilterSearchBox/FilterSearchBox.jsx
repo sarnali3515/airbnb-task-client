@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from 'react';
 import { FiSearch } from 'react-icons/fi';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import { format } from 'date-fns'; // Import date-fns to format dates
 
 // Import the images from assets/images folder
 import allImage from '../../assets/images/all.jpg';
@@ -16,8 +17,9 @@ const FilterSearchBox = ({ isScrolled }) => {
     const [showGuestsDropdown, setShowGuestsDropdown] = useState(false);
     const [checkInDate, setCheckInDate] = useState(null);
     const [checkOutDate, setCheckOutDate] = useState(null);
+    const [selectedRegion, setSelectedRegion] = useState("I'm flexible");
     const [guests, setGuests] = useState({
-        adults: 1,
+        adults: 0,  // Set initial adults count to 0
         children: 0,
         infants: 0,
         pets: 0,
@@ -42,6 +44,10 @@ const FilterSearchBox = ({ isScrolled }) => {
         setShowDestinationDropdown(!showDestinationDropdown);
         setShowGuestsDropdown(false); // Close other dropdowns
     };
+    const handleRegionSelect = (region) => {
+        setSelectedRegion(region);
+        setShowDestinationDropdown(false);
+    };
 
     // Handle guests dropdown toggle
     const toggleGuestsDropdown = () => {
@@ -52,6 +58,7 @@ const FilterSearchBox = ({ isScrolled }) => {
     // Handle date selection for check-in and check-out
     const handleCheckInDateChange = (date) => {
         setCheckInDate(date);
+        setCheckOutDate(null); // Reset check-out date when selecting new check-in
     };
 
     const handleCheckOutDateChange = (date) => {
@@ -78,6 +85,31 @@ const FilterSearchBox = ({ isScrolled }) => {
         };
     }, []);
 
+    // Utility function to format guest input label
+    const getGuestLabel = () => {
+        const { adults, children, infants, pets } = guests;
+        const totalGuests = adults + children;
+        let guestLabel = '';
+
+        // Handle guests (adults + children)
+        if (totalGuests > 0) {
+            guestLabel += `${totalGuests} ${totalGuests > 1 ? 'guests' : 'guest'}`;
+        }
+
+        // Handle infants
+        if (infants > 0) {
+            guestLabel += `${guestLabel ? ', ' : ''}${infants} ${infants > 1 ? 'infants' : 'infant'}`;
+        }
+
+        // Handle pets
+        if (pets > 0) {
+            guestLabel += `${guestLabel ? ', ' : ''}${pets} ${pets > 1 ? 'pets' : 'pet'}`;
+        }
+
+        // Default placeholder if no guests
+        return guestLabel || 'Add guests';
+    };
+
     return (
         <div
             className={`w-full max-w-3xl mx-auto bg-white rounded-full border shadow-md transition-all duration-300 mb-5 ${isScrolled ? 'fixed top-4 left-1/2 transform -translate-x-1/2 max-w-md z-20' : 'mt-8'
@@ -92,7 +124,9 @@ const FilterSearchBox = ({ isScrolled }) => {
                             type="text"
                             placeholder="Search destinations"
                             className="w-full focus:outline-none text-sm"
+                            value={selectedRegion === "I'm flexible" ? "" : selectedRegion} // Initially empty (so placeholder shows), updates with selectedRegion
                             onClick={toggleDestinationDropdown}
+                            readOnly // Optional: Prevent manual typing
                         />
                     )}
                     {/* Destination Dropdown */}
@@ -103,7 +137,7 @@ const FilterSearchBox = ({ isScrolled }) => {
                                     <div
                                         key={region}
                                         className="cursor-pointer hover:bg-gray-200 p-2 rounded-lg text-center"
-                                        onClick={() => setShowDestinationDropdown(false)}
+                                        onClick={() => handleRegionSelect(region)}
                                     >
                                         <img
                                             src={regionImages[region]}
@@ -118,7 +152,7 @@ const FilterSearchBox = ({ isScrolled }) => {
                     )}
                 </div>
 
-                {/* Check-in and Check-out */}
+                {/* Check-in */}
                 <div className={`flex-1 border-r px-4 relative ${isScrolled ? 'text-sm' : 'text-base'}`}>
                     <label className="font-semibold">{isScrolled ? 'Any week' : 'Check in'}</label>
                     {!isScrolled && (
@@ -130,11 +164,13 @@ const FilterSearchBox = ({ isScrolled }) => {
                             endDate={checkOutDate}
                             placeholderText="Add dates"
                             className="focus:outline-none text-sm w-full"
+                            dateFormat="MMM d" // Format as "Oct 4"
                         />
                     )}
                 </div>
 
-                {!isScrolled &&
+                {/* Check-out */}
+                {!isScrolled && (
                     <div className={`flex-1 border-r px-4 relative ${isScrolled ? 'text-sm' : 'text-base'}`}>
                         <label className="font-semibold">{isScrolled ? 'Any week' : 'Check out'}</label>
                         {!isScrolled && (
@@ -147,10 +183,12 @@ const FilterSearchBox = ({ isScrolled }) => {
                                 minDate={checkInDate}
                                 placeholderText="Add dates"
                                 className="focus:outline-none text-sm w-full"
+                                dateFormat="MMM d" // Format as "Oct 4"
+                                highlightDates={[{ 'react-datepicker__day--highlighted': [checkInDate] }]} // Highlight selected dates
                             />
                         )}
                     </div>
-                }
+                )}
 
                 {/* Guests */}
                 <div className={`flex-1 px-4 relative ${isScrolled ? 'text-sm' : 'text-base'}`}>
@@ -160,11 +198,11 @@ const FilterSearchBox = ({ isScrolled }) => {
                             type="text"
                             placeholder="Add guests"
                             className="w-full focus:outline-none text-sm"
+                            value={getGuestLabel()} // Dynamically show guest count
                             onClick={toggleGuestsDropdown}
                             readOnly
                         />
                     )}
-                    {/* Guests Dropdown */}
                     {/* Guests Dropdown */}
                     {showGuestsDropdown && (
                         <div ref={guestsDropdownRef} className="absolute top-12 left-0 bg-white border rounded-lg p-4 shadow-md w-[400px] z-30">
@@ -177,45 +215,43 @@ const FilterSearchBox = ({ isScrolled }) => {
                                     </div>
                                     <div className="flex items-center space-x-2">
                                         <button
+                                            className="p-1 rounded-full border"
                                             onClick={() => setGuests({ ...guests, adults: Math.max(0, guests.adults - 1) })}
-                                            className="px-3 py-1 bg-gray-200 rounded-full"
                                         >
                                             -
                                         </button>
                                         <span>{guests.adults}</span>
                                         <button
+                                            className="p-1 rounded-full border"
                                             onClick={() => setGuests({ ...guests, adults: guests.adults + 1 })}
-                                            className="px-3 py-1 bg-gray-200 rounded-full"
                                         >
                                             +
                                         </button>
                                     </div>
                                 </div>
-                                <hr />
 
                                 {/* Children Section */}
                                 <div className="flex justify-between items-center">
                                     <div>
                                         <span className="font-semibold">Children</span>
-                                        <p className="text-sm text-gray-500">Ages 2 – 12</p>
+                                        <p className="text-sm text-gray-500">Ages 2-12</p>
                                     </div>
                                     <div className="flex items-center space-x-2">
                                         <button
+                                            className="p-1 rounded-full border"
                                             onClick={() => setGuests({ ...guests, children: Math.max(0, guests.children - 1) })}
-                                            className="px-3 py-1 bg-gray-200 rounded-full"
                                         >
                                             -
                                         </button>
                                         <span>{guests.children}</span>
                                         <button
+                                            className="p-1 rounded-full border"
                                             onClick={() => setGuests({ ...guests, children: guests.children + 1 })}
-                                            className="px-3 py-1 bg-gray-200 rounded-full"
                                         >
                                             +
                                         </button>
                                     </div>
                                 </div>
-                                <hr />
 
                                 {/* Infants Section */}
                                 <div className="flex justify-between items-center">
@@ -225,39 +261,37 @@ const FilterSearchBox = ({ isScrolled }) => {
                                     </div>
                                     <div className="flex items-center space-x-2">
                                         <button
+                                            className="p-1 rounded-full border"
                                             onClick={() => setGuests({ ...guests, infants: Math.max(0, guests.infants - 1) })}
-                                            className="px-3 py-1 bg-gray-200 rounded-full"
                                         >
                                             -
                                         </button>
                                         <span>{guests.infants}</span>
                                         <button
+                                            className="p-1 rounded-full border"
                                             onClick={() => setGuests({ ...guests, infants: guests.infants + 1 })}
-                                            className="px-3 py-1 bg-gray-200 rounded-full"
                                         >
                                             +
                                         </button>
                                     </div>
                                 </div>
-                                <hr />
 
                                 {/* Pets Section */}
                                 <div className="flex justify-between items-center">
                                     <div>
                                         <span className="font-semibold">Pets</span>
-                                        <p className="text-sm text-gray-500 underline">Bringing a service animal?</p>
                                     </div>
                                     <div className="flex items-center space-x-2">
                                         <button
+                                            className="p-1 rounded-full border"
                                             onClick={() => setGuests({ ...guests, pets: Math.max(0, guests.pets - 1) })}
-                                            className="px-3 py-1 bg-gray-200 rounded-full"
                                         >
                                             -
                                         </button>
                                         <span>{guests.pets}</span>
                                         <button
+                                            className="p-1 rounded-full border"
                                             onClick={() => setGuests({ ...guests, pets: guests.pets + 1 })}
-                                            className="px-3 py-1 bg-gray-200 rounded-full"
                                         >
                                             +
                                         </button>
@@ -266,13 +300,12 @@ const FilterSearchBox = ({ isScrolled }) => {
                             </div>
                         </div>
                     )}
-
                 </div>
 
-                {/* Search Button */}
-                <div className={`pl-4 ${isScrolled ? 'pr-2' : 'pr-4'}`}>
-                    <button className="bg-red-500 text-white px-3 py-3 rounded-full hover:bg-red-600 transition duration-200">
-                        <FiSearch size={20} />
+                {/* Search button */}
+                <div className="px-4">
+                    <button className="p-2 rounded-full bg-red-500 text-white">
+                        <FiSearch size={18} />
                     </button>
                 </div>
             </div>

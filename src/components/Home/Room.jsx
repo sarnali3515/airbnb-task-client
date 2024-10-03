@@ -9,7 +9,7 @@ const Rooms = ({ selectedCategory }) => {
 
     useEffect(() => {
         setLoading(true);
-        // Fetch data from the backend API
+
         fetch('http://localhost:5000/rooms')
             .then((res) => res.json())
             .then((data) => {
@@ -22,7 +22,7 @@ const Rooms = ({ selectedCategory }) => {
             });
     }, []);
 
-    // Filter rooms based on the selected category
+
     const filteredRooms = selectedCategory === 'All'
         ? rooms
         : rooms.filter(room => room.category === selectedCategory);

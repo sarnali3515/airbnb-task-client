@@ -39,7 +39,6 @@ const Home = () => {
                     transition: 'top 0.3s ease',
                 }}
             >
-                {/* Pass the category selection function to Categories */}
                 <Categories onCategorySelect={(category) => setSelectedCategory(category)} />
             </div>
 

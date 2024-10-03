@@ -9,10 +9,10 @@ import FilterSearchBox from '../../FilterSearchBox/FilterSearchBox';
 const Navbar = () => {
     const [isScrolled, setIsScrolled] = useState(false);
 
-    // Handle scroll event
+    // scroll event
     const handleScroll = () => {
         const offset = window.scrollY;
-        if (offset > 150) { // Adjust this value to trigger transition
+        if (offset > 150) {
             setIsScrolled(true);
         } else {
             setIsScrolled(false);
@@ -40,7 +40,7 @@ const Navbar = () => {
                             />
                         </Link>
 
-                        {/* Stays and Experiences links */}
+                        {/* Stays and Experiences */}
                         <div className={`flex gap-4 items-center ${isScrolled ? 'hidden' : 'block'}`}>
                             <Link
                                 to="/stays"
