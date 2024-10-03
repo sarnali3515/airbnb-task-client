@@ -1,11 +1,11 @@
-import { Link } from 'react-router-dom';
+
 import PropTypes from 'prop-types';
 import Slider from 'react-slick';
 import { FaStar, FaChevronLeft, FaChevronRight, FaHeart } from 'react-icons/fa';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-// Prev Arrow Component
+// prev arrow 
 const PrevArrow = ({ onClick }) => (
     <button
         onClick={onClick}
@@ -16,7 +16,7 @@ const PrevArrow = ({ onClick }) => (
     </button>
 );
 
-// Next Arrow Component
+// next arrow 
 const NextArrow = ({ onClick }) => (
     <button
         onClick={onClick}
@@ -40,16 +40,16 @@ const Card = ({ room }) => {
         prevArrow: <PrevArrow />,
     };
 
-    // Formatting the date for display (e.g., "Oct 3 - 8")
+
     const fromDate = new Date(room.from);
     const toDate = new Date(room.to);
     const options = { month: 'short', day: 'numeric' };
 
     const formattedFrom = new Intl.DateTimeFormat('en-US', options).format(fromDate);
-    const formattedToDay = toDate.getDate(); // Just the day of the 'to' date
+    const formattedToDay = toDate.getDate();
 
     return (
-        <Link to={`/room/${room?._id}`} className='col-span-1 cursor-pointer group'>
+        <div className='col-span-1 cursor-pointer group'>
             <div className='flex flex-col  w-full'>
                 {/* Image slider */}
                 <div className='aspect-square w-full relative overflow-hidden rounded-xl'>
@@ -73,7 +73,7 @@ const Card = ({ room }) => {
                         />
                     )}
 
-                    {/* Love Icon */}
+                    {/* love Icon */}
                     <div className="absolute top-3 right-3">
                         <FaHeart
                             className="text-white  p-1"
@@ -82,7 +82,7 @@ const Card = ({ room }) => {
                     </div>
                 </div>
 
-                {/* Room details */}
+                {/* room details */}
                 <div className='flex justify-between mt-2'>
                     <div className='font-semibold text-lg'>{room?.location}</div>
                     <div className='flex items-center'>
@@ -90,8 +90,10 @@ const Card = ({ room }) => {
                     </div>
                 </div>
 
+
                 {/* date  */}
                 <div className=' text-neutral-500'>
+                    <p>{room?.distance} kilometers away</p>
                     {formattedFrom} - {formattedToDay}
                 </div>
 
@@ -100,7 +102,7 @@ const Card = ({ room }) => {
                     <div> night</div>
                 </div>
             </div>
-        </Link>
+        </div>
     );
 };
 
@@ -108,7 +110,7 @@ Card.propTypes = {
     room: PropTypes.shape({
         _id: PropTypes.string.isRequired,
         location: PropTypes.string.isRequired,
-        country: PropTypes.string.isRequired,
+        distance: PropTypes.string.isRequired,
         price: PropTypes.string.isRequired,
         ratings: PropTypes.number.isRequired,
         images: PropTypes.object,

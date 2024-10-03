@@ -25,7 +25,7 @@ const Main = () => {
     return (
         <div>
             <Navbar onRegionSelect={handleRegionSelect} />
-            <div className='pt-24 min-h-[calc(100vh-68px)]'>
+            <div className='pt-24 min-h-[calc(100vh-68px)] mb-10'>
                 <Outlet context={{ rooms, selectedRegion }} />
             </div>
             <Footer />

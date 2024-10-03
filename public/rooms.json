@@ -13,9 +13,10 @@
         "beds": "4",
         "bedrooms": "3",
         "ratings": 5,
+        "distance": 1780,
         "images": {
-            "image1": "https://i.ibb.co/xMbTbYX/mykonos-villa.jpg",
-            "image2": "https://i.ibb.co/7b3hYms/mykonos-pool.jpg"
+            "image1": "https://i.ibb.co.com/992wydz/greece-2.webp",
+            "image2": "https://i.ibb.co.com/SVJgtrm/greece-1.webp"
         }
     },
     {
@@ -32,9 +33,10 @@
         "beds": "2",
         "bedrooms": "1",
         "ratings": 4.5,
+        "distance": 1340,
         "images": {
-            "image1": "https://i.ibb.co/4t9Pb2P/iceland-cottage.jpg",
-            "image2": "https://i.ibb.co/Fm7Pqk8/northern-lights.jpg"
+            "image1": "https://i.ibb.co.com/b16wPM0/image.png",
+            "image2": "https://i.ibb.co.com/Jj46xk3/image.png"
         }
     },
     {
@@ -51,9 +53,10 @@
         "beds": "2",
         "bedrooms": "2",
         "ratings": 4.8,
+        "distance": 1625,
         "images": {
-            "image1": "https://i.ibb.co/QdWLQ9B/bali-villa.jpg",
-            "image2": "https://i.ibb.co/DW7VrRK/bali-pool.jpg"
+            "image1": "https://i.ibb.co.com/rFx8bdz/image.png",
+            "image2": "https://i.ibb.co.com/JQXc8wm/image.png"
         }
     },
     {
@@ -70,9 +73,10 @@
         "beds": "5",
         "bedrooms": "4",
         "ratings": 5,
+        "distance": 980,
         "images": {
-            "image1": "https://i.ibb.co/ZXx9hfd/banff-chalet.jpg",
-            "image2": "https://i.ibb.co/6gcpWN0/skiing-view.jpg"
+            "image1": "https://i.ibb.co.com/Mhy2fJx/image.png",
+            "image2": "https://i.ibb.co.com/0sgfQK3/image.png"
         }
     },
     {
@@ -89,9 +93,10 @@
         "beds": "3",
         "bedrooms": "2",
         "ratings": 4.9,
+        "distance": 1450,
         "images": {
-            "image1": "https://i.ibb.co/pv3B3tk/malibu-beach.jpg",
-            "image2": "https://i.ibb.co/2dHrMfB/surfing-malibu.jpg"
+            "image1": "https://i.ibb.co.com/N6ZkDMr/image.png",
+            "image2": "https://i.ibb.co.com/9gWtTQm/image.png"
         }
     },
     {
@@ -108,9 +113,10 @@
         "beds": "2",
         "bedrooms": "2",
         "ratings": 4.3,
+        "distance": 670,
         "images": {
-            "image1": "https://i.ibb.co/Yb2L9wb/chiang-mai-retreat.jpg",
-            "image2": "https://i.ibb.co/xHP3rrx/chiang-mai-countryside.jpg"
+            "image1": "https://i.ibb.co.com/9w4R8gV/image.png",
+            "image2": "https://i.ibb.co.com/dfN8g7q/image.png"
         }
     },
     {
@@ -127,9 +133,10 @@
         "beds": "3",
         "bedrooms": "3",
         "ratings": 5,
+        "distance": 1930,
         "images": {
-            "image1": "https://i.ibb.co/qCnBdKj/santorini-villa.jpg",
-            "image2": "https://i.ibb.co/FXg7Kbm/santorini-view.jpg"
+            "image1": "https://i.ibb.co.com/DfXMmfb/image.png",
+            "image2": "https://i.ibb.co.com/L9CKwjT/image.png"
         }
     },
     {
@@ -146,9 +153,10 @@
         "beds": "3",
         "bedrooms": "3",
         "ratings": 4.7,
+        "distance": 1250,
         "images": {
-            "image1": "https://i.ibb.co/vx2Y5cs/lake-tahoe-cabin.jpg",
-            "image2": "https://i.ibb.co/J7nVwBr/lake-tahoe-dock.jpg"
+            "image1": "https://i.ibb.co.com/WySq3ZF/image.png",
+            "image2": "https://i.ibb.co.com/80c0d75/image.png"
         }
     },
     {
@@ -165,9 +173,10 @@
         "beds": "2",
         "bedrooms": "2",
         "ratings": 4.4,
+        "distance": 860,
         "images": {
-            "image1": "https://i.ibb.co/k1K9JgM/perth-windmill.jpg",
-            "image2": "https://i.ibb.co/cvD3VZd/windmill-farm.jpg"
+            "image1": "https://i.ibb.co.com/QrD3zFf/image.png",
+            "image2": "https://i.ibb.co.com/3f8k47g/image.png"
         }
     },
     {
@@ -184,9 +193,10 @@
         "beds": "2",
         "bedrooms": "2",
         "ratings": 4.6,
+        "distance": 1540,
         "images": {
-            "image1": "https://i.ibb.co/4WfV9Fg/sedona-desert.jpg",
-            "image2": "https://i.ibb.co/WFsQ6Rt/red-rock-view.jpg"
+            "image1": "https://i.ibb.co.com/5vBBnRS/image.png",
+            "image2": "https://i.ibb.co.com/T0WwTpJ/image.png"
         }
     }
 ]

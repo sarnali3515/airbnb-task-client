@@ -5,9 +5,9 @@ import Rooms from '../../components/Home/Room';
 
 const Home = () => {
     const [isCategorySticky, setIsCategorySticky] = useState(false);
-    const [selectedCategory, setSelectedCategory] = useState('All'); // Default category
+    const [selectedCategory, setSelectedCategory] = useState('All');
 
-    // Handle scroll event for Categories
+    // scroll event for Categories
     const handleScroll = () => {
         const categorySection = document.querySelector('.categories-section');
         if (window.scrollY > categorySection?.offsetTop - 80) {
@@ -44,7 +44,6 @@ const Home = () => {
 
             {/* Rooms section */}
             <div>
-                {/* Pass selected category to Rooms */}
                 <Rooms selectedCategory={selectedCategory}></Rooms>
             </div>
         </div>

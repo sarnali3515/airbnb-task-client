@@ -2,9 +2,7 @@ import { useState, useRef, useEffect } from 'react';
 import { FiSearch } from 'react-icons/fi';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import { format } from 'date-fns'; // Import date-fns to format dates
-
-// Import the images from assets/images folder
+// import { format } from 'date-fns';
 import allImage from '../../assets/images/all.jpg';
 import asiaImage from '../../assets/images/asia.webp';
 import canadaImage from '../../assets/images/canada.webp';
@@ -19,17 +17,17 @@ const FilterSearchBox = ({ isScrolled }) => {
     const [checkOutDate, setCheckOutDate] = useState(null);
     const [selectedRegion, setSelectedRegion] = useState("I'm flexible");
     const [guests, setGuests] = useState({
-        adults: 0,  // Set initial adults count to 0
+        adults: 0,
         children: 0,
         infants: 0,
         pets: 0,
     });
 
-    // Create refs for dropdowns
+
     const destinationDropdownRef = useRef(null);
     const guestsDropdownRef = useRef(null);
 
-    // Images for each region (locally loaded)
+    // images of regions
     const regionImages = {
         "I'm flexible": allImage,
         "Southeast Asia": asiaImage,
@@ -39,33 +37,33 @@ const FilterSearchBox = ({ isScrolled }) => {
         "United States": usaImage,
     };
 
-    // Handle destination dropdown toggle
+    // destination dropdown 
     const toggleDestinationDropdown = () => {
         setShowDestinationDropdown(!showDestinationDropdown);
-        setShowGuestsDropdown(false); // Close other dropdowns
+        setShowGuestsDropdown(false);
     };
     const handleRegionSelect = (region) => {
         setSelectedRegion(region);
         setShowDestinationDropdown(false);
     };
 
-    // Handle guests dropdown toggle
+    // guests dropdown 
     const toggleGuestsDropdown = () => {
         setShowGuestsDropdown(!showGuestsDropdown);
-        setShowDestinationDropdown(false); // Close other dropdowns
+        setShowDestinationDropdown(false);
     };
 
-    // Handle date selection for check-in and check-out
+    // date 
     const handleCheckInDateChange = (date) => {
         setCheckInDate(date);
-        setCheckOutDate(null); // Reset check-out date when selecting new check-in
+        setCheckOutDate(null);
     };
 
     const handleCheckOutDateChange = (date) => {
         setCheckOutDate(date);
     };
 
-    // Close dropdowns when clicking outside
+    // close dropdowns
     useEffect(() => {
         const handleClickOutside = (event) => {
             if (destinationDropdownRef.current && !destinationDropdownRef.current.contains(event.target)) {
@@ -76,37 +74,36 @@ const FilterSearchBox = ({ isScrolled }) => {
             }
         };
 
-        // Bind the event listener
+
         document.addEventListener('mousedown', handleClickOutside);
 
-        // Clean up the event listener on component unmount
+
         return () => {
             document.removeEventListener('mousedown', handleClickOutside);
         };
     }, []);
 
-    // Utility function to format guest input label
+
     const getGuestLabel = () => {
         const { adults, children, infants, pets } = guests;
         const totalGuests = adults + children;
         let guestLabel = '';
 
-        // Handle guests (adults + children)
+        // guests
         if (totalGuests > 0) {
             guestLabel += `${totalGuests} ${totalGuests > 1 ? 'guests' : 'guest'}`;
         }
 
-        // Handle infants
+        // infants
         if (infants > 0) {
             guestLabel += `${guestLabel ? ', ' : ''}${infants} ${infants > 1 ? 'infants' : 'infant'}`;
         }
 
-        // Handle pets
+        // pets
         if (pets > 0) {
             guestLabel += `${guestLabel ? ', ' : ''}${pets} ${pets > 1 ? 'pets' : 'pet'}`;
         }
 
-        // Default placeholder if no guests
         return guestLabel || 'Add guests';
     };
 
@@ -116,7 +113,7 @@ const FilterSearchBox = ({ isScrolled }) => {
                 }`}
         >
             <div className={`flex justify-between items-center ${isScrolled ? 'px-2 py-1' : 'px-4 py-2'}`}>
-                {/* Location - Smaller on scroll */}
+
                 <div className={`flex-1 border-r px-4 relative ${isScrolled ? 'text-sm' : 'text-base'}`}>
                     <label className="font-semibold">{isScrolled ? 'Anywhere' : 'Where'}</label>
                     {!isScrolled && (
@@ -124,12 +121,12 @@ const FilterSearchBox = ({ isScrolled }) => {
                             type="text"
                             placeholder="Search destinations"
                             className="w-full focus:outline-none text-sm"
-                            value={selectedRegion === "I'm flexible" ? "" : selectedRegion} // Initially empty (so placeholder shows), updates with selectedRegion
+                            value={selectedRegion === "I'm flexible" ? "" : selectedRegion}
                             onClick={toggleDestinationDropdown}
-                            readOnly // Optional: Prevent manual typing
+                            readOnly
                         />
                     )}
-                    {/* Destination Dropdown */}
+                    {/* destination Dropdown */}
                     {showDestinationDropdown && (
                         <div ref={destinationDropdownRef} className="absolute top-12 left-0 bg-white border rounded-lg p-4 shadow-md w-[400px] z-30">
                             <div className="grid grid-cols-3 gap-4">
@@ -152,7 +149,7 @@ const FilterSearchBox = ({ isScrolled }) => {
                     )}
                 </div>
 
-                {/* Check-in */}
+                {/* check in */}
                 <div className={`flex-1 border-r px-4 relative ${isScrolled ? 'text-sm' : 'text-base'}`}>
                     <label className="font-semibold">{isScrolled ? 'Any week' : 'Check in'}</label>
                     {!isScrolled && (
@@ -169,7 +166,7 @@ const FilterSearchBox = ({ isScrolled }) => {
                     )}
                 </div>
 
-                {/* Check-out */}
+                {/* check out */}
                 {!isScrolled && (
                     <div className={`flex-1 border-r px-4 relative ${isScrolled ? 'text-sm' : 'text-base'}`}>
                         <label className="font-semibold">{isScrolled ? 'Any week' : 'Check out'}</label>
@@ -183,14 +180,14 @@ const FilterSearchBox = ({ isScrolled }) => {
                                 minDate={checkInDate}
                                 placeholderText="Add dates"
                                 className="focus:outline-none text-sm w-full"
-                                dateFormat="MMM d" // Format as "Oct 4"
-                                highlightDates={[{ 'react-datepicker__day--highlighted': [checkInDate] }]} // Highlight selected dates
+                                dateFormat="MMM d"
+                                highlightDates={[{ 'react-datepicker__day--highlighted': [checkInDate] }]}
                             />
                         )}
                     </div>
                 )}
 
-                {/* Guests */}
+                {/* guests */}
                 <div className={`flex-1 px-4 relative ${isScrolled ? 'text-sm' : 'text-base'}`}>
                     <label className="font-semibold">{isScrolled ? 'Add guests' : 'Who'}</label>
                     {!isScrolled && (
@@ -203,11 +200,11 @@ const FilterSearchBox = ({ isScrolled }) => {
                             readOnly
                         />
                     )}
-                    {/* Guests Dropdown */}
+                    {/* guests dropdown */}
                     {showGuestsDropdown && (
                         <div ref={guestsDropdownRef} className="absolute top-12 left-0 bg-white border rounded-lg p-4 shadow-md w-[400px] z-30">
                             <div className="space-y-4">
-                                {/* Adults Section */}
+                                {/* adults section */}
                                 <div className="flex justify-between items-center">
                                     <div>
                                         <span className="font-semibold">Adults</span>
@@ -230,7 +227,7 @@ const FilterSearchBox = ({ isScrolled }) => {
                                     </div>
                                 </div>
 
-                                {/* Children Section */}
+                                {/* children Section */}
                                 <div className="flex justify-between items-center">
                                     <div>
                                         <span className="font-semibold">Children</span>
@@ -253,7 +250,7 @@ const FilterSearchBox = ({ isScrolled }) => {
                                     </div>
                                 </div>
 
-                                {/* Infants Section */}
+                                {/* infants Section */}
                                 <div className="flex justify-between items-center">
                                     <div>
                                         <span className="font-semibold">Infants</span>
@@ -276,7 +273,7 @@ const FilterSearchBox = ({ isScrolled }) => {
                                     </div>
                                 </div>
 
-                                {/* Pets Section */}
+                                {/* pets Section */}
                                 <div className="flex justify-between items-center">
                                     <div>
                                         <span className="font-semibold">Pets</span>
@@ -302,7 +299,7 @@ const FilterSearchBox = ({ isScrolled }) => {
                     )}
                 </div>
 
-                {/* Search button */}
+                {/* search button */}
                 <div className="px-4">
                     <button className="p-2 rounded-full bg-red-500 text-white">
                         <FiSearch size={18} />

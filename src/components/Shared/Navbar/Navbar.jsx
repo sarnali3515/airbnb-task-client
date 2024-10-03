@@ -30,7 +30,7 @@ const Navbar = () => {
             <div className={`pt-4 transition-all ${isScrolled ? 'py-4' : 'pt-4'}`}>
                 <Container>
                     <div className="flex flex-row items-center justify-between gap-3 md:gap-0">
-                        {/* Logo */}
+
                         <Link to="/">
                             <img
                                 src="https://i.ibb.co.com/xJptzQH/airbnb-removebg-preview.png"
@@ -64,10 +64,10 @@ const Navbar = () => {
                                     Airbnb your home
                                 </button>
 
-                                {/* Globe Icon */}
+
                                 <FiGlobe />
 
-                                {/* Dropdown Button */}
+                                {/* dropdown button */}
                                 <div className="p-4 md:py-1 md:px-2 border-[1px] border-neutral-200 flex items-center gap-3 rounded-full cursor-pointer hover:shadow-md transition">
                                     <AiOutlineMenu />
                                     <img

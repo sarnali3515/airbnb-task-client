@@ -46,6 +46,10 @@ const Rooms = ({ selectedCategory }) => {
                     />
                 </div>
             )}
+            <div className='text-center'>
+                <p className='text-xl font-semibold  mt-8 mb-4'>Continue exploring top of the world homes</p>
+                <button className="btn bg-black text-white text-lg">Show More</button>
+            </div>
         </Container>
     );
 };
